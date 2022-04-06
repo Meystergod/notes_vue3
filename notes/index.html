@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Notes #1 Homework</title>
+		<script src="https://unpkg.com/vue@next"></script>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div id="app">
+				<h1>{{ title }}</h1>
+				<form @submit.prevent="submitForm">
+					<input type="text" v-model="value" placeholder="Type your note" required>
+					<button type="submit">Add new note</button>
+				</form>
+				<div class="notes">
+					<div class="note" v-if="editIndex === -1" v-for="(note, index) in notes" key="index">
+						<span @click="removeNote(index)">&#10005;</span>
+						<span @click="editNote(index)">&#9998;</span>
+						{{ note }}
+					</div>
+					<div class="note" v-else>
+						<input type="text" v-model="notes[editIndex]">
+						<span @click="editNote(-1)">&#10003;</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="./app.js"></script>
+	</body>
+</html>
