@@ -7,7 +7,7 @@
             @click="$emit('onItemClick', item)"
             :class="{ isPreview: isPreview, isActive: isActive }"
         >
-            <span>{{ item }}</span>
+            {{ item }}
         </div>
     </div>
 </template>

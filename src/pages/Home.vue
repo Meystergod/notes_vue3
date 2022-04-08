@@ -37,10 +37,10 @@ export default {
         this.getNotes()
     },
     methods: {
-        handleSubmit(title) {
+        handleSubmit(title, activeTags) {
             this.notes.push({
                 title: title,
-                tags: []
+                tags: activeTags
             })
         },
         handleRemoveNote(index) {

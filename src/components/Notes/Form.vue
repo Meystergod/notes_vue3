@@ -20,16 +20,21 @@ export default {
     data() {
         return {
             value: '',
-            tags: ['work', 'home', 'travel']
+            tags: ['work', 'home', 'travel'],
+            activeTags: []
         }
     },
     methods: {
         submitForm() {
-            this.$emit('submitForm', this.value)
+            this.$emit('submitForm', this.value, this.activeTags)
             this.value = ''
+            this.activeTags = []
+            Array.from(document.getElementsByClassName('tag-item isActive')).forEach(el => el.classList.remove('isActive'))
         },
         handleTagClick(tag) {
-            console.log(tag)
+            event.target.classList.toggle('isActive')
+            const index = this.activeTags.indexOf(tag)
+            index === -1 ? this.activeTags.push(tag) : this.activeTags.splice(index, 1)
         }
     }
 }
